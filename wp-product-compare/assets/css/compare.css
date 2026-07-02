@@ -1,0 +1,162 @@
+/* WP Product Compare - Styles */
+
+.wpc-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.wpc-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.wpc-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.wpc-vs-badge {
+    background: #ff4757;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.wpc-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.wpc-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+}
+
+.wpc-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.wpc-card img {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.wpc-card h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.wpc-summary {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    min-height: 60px;
+}
+
+.wpc-btn-compare {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: #3498db;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.wpc-btn-compare:hover {
+    background: #2980b9;
+}
+
+.wpc-table-wrapper {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.wpc-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.wpc-table th, 
+.wpc-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    vertical-align: top;
+}
+
+.wpc-table thead th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+    position: sticky;
+    top: 0;
+}
+
+.wpc-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.wpc-table tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+.wpc-table tbody tr:hover {
+    background-color: #f1f7ff;
+}
+
+.wpc-table td:first-child {
+    font-weight: 500;
+    color: #555;
+    width: 30%;
+}
+
+@media (max-width: 768px) {
+    .wpc-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .wpc-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .wpc-header h1 {
+        font-size: 2rem;
+    }
+    
+    .wpc-table th,
+    .wpc-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
