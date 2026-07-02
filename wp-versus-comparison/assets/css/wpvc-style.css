@@ -1,0 +1,339 @@
+/* WP Versus Comparison Styles */
+
+.wpvc-comparison-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Header Styles */
+.wpvc-comparison-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.wpvc-comparison-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.wpvc-comparison-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Items Overview */
+.wpvc-items-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.wpvc-item-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wpvc-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.wpvc-item-image {
+    margin-bottom: 20px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wpvc-item-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.wpvc-placeholder-image {
+    width: 100%;
+    height: 200px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1.2rem;
+}
+
+.wpvc-item-name {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.wpvc-item-name a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.wpvc-item-name a:hover {
+    color: #3498db;
+}
+
+.wpvc-item-summary {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.wpvc-vs-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #e74c3c;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 800;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+    z-index: 10;
+}
+
+/* Buttons */
+.wpvc-button,
+.wpvc-button-secondary {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.wpvc-button {
+    background: #3498db;
+    color: #fff;
+}
+
+.wpvc-button:hover {
+    background: #2980b9;
+}
+
+.wpvc-button-secondary {
+    background: #ecf0f1;
+    color: #2c3e50;
+    margin: 5px;
+}
+
+.wpvc-button-secondary:hover {
+    background: #bdc3c7;
+}
+
+/* Specifications Table */
+.wpvc-specifications {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.wpvc-section-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.wpvc-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.wpvc-comparison-table thead {
+    background: #34495e;
+    color: #fff;
+}
+
+.wpvc-comparison-table th,
+.wpvc-comparison-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.wpvc-comparison-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.wpvc-spec-label {
+    width: 30%;
+    font-weight: 600;
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+.wpvc-spec-value {
+    width: 35%;
+}
+
+.wpvc-spec-row:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.wpvc-spec-row.wpvc-different .wpvc-value-1,
+.wpvc-spec-row.wpvc-different .wpvc-value-2 {
+    color: #2c3e50;
+}
+
+.wpvc-spec-row.wpvc-same .wpvc-value-1,
+.wpvc-spec-row.wpvc-same .wpvc-value-2 {
+    color: #7f8c8d;
+}
+
+.wpvc-no-specs {
+    text-align: center;
+    color: #999;
+    padding: 30px !important;
+    font-style: italic;
+}
+
+/* Actions & Share */
+.wpvc-actions,
+.wpvc-share {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wpvc-share h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.wpvc-share-url {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.wpvc-share-url input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #ecf0f1;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+.wpvc-copy-btn {
+    padding: 12px 25px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.wpvc-copy-btn:hover {
+    background: #229954;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wpvc-items-overview {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .wpvc-vs-badge {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin: 20px auto;
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+
+    .wpvc-comparison-title {
+        font-size: 1.8rem;
+    }
+
+    .wpvc-comparison-table {
+        font-size: 0.85rem;
+    }
+
+    .wpvc-comparison-table th,
+    .wpvc-comparison-table td {
+        padding: 10px 8px;
+    }
+
+    .wpvc-spec-label {
+        width: 40%;
+    }
+
+    .wpvc-share-url {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .wpvc-comparison-container {
+        padding: 10px;
+    }
+
+    .wpvc-item-card {
+        padding: 15px;
+    }
+
+    .wpvc-specifications {
+        padding: 15px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .wpvc-actions,
+    .wpvc-share {
+        display: none;
+    }
+
+    .wpvc-item-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .wpvc-comparison-table {
+        font-size: 0.8rem;
+    }
+}
