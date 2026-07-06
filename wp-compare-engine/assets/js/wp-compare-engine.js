@@ -225,6 +225,14 @@
                 clearAll();
             }
 
+            // Handle new toggle button style
+            const compareToggle = e.target.closest('.wp-compare-toggle');
+            if (compareToggle) {
+                e.preventDefault();
+                toggleCompare(compareToggle);
+            }
+
+            // Legacy checkbox support
             const compareCheckbox = e.target.closest('.wp-compare-checkbox');
             if (compareCheckbox) {
                 e.preventDefault();

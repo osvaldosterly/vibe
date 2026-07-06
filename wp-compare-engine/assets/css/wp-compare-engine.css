@@ -567,6 +567,58 @@
     margin: 0;
 }
 
+/* Compare Toggle Button (New Style) */
+.wp-compare-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--wp-compare-light);
+    border: 1px solid var(--wp-compare-border);
+    border-radius: var(--wp-compare-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--wp-compare-dark);
+    transition: all 0.2s ease;
+}
+
+.wp-compare-toggle:hover {
+    background: var(--wp-compare-primary);
+    border-color: var(--wp-compare-primary);
+    color: #fff;
+}
+
+.wp-compare-toggle.is-active,
+.wp-compare-toggle[data-active="true"] {
+    background: var(--wp-compare-success);
+    border-color: var(--wp-compare-success);
+    color: #fff;
+}
+
+.wp-compare-toggle .icon-checkbox,
+.wp-compare-toggle .icon-check {
+    width: 16px;
+    height: 16px;
+}
+
+.wp-compare-toggle .wp-compare-text-active {
+    display: none !important;
+}
+
+.wp-compare-toggle.is-active .wp-compare-text-default,
+.wp-compare-toggle[data-active="true"] .wp-compare-text-default {
+    display: none !important;
+}
+
+.wp-compare-toggle.is-active .wp-compare-text-active,
+.wp-compare-toggle[data-active="true"] .wp-compare-text-active {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .wp-compare-table th,

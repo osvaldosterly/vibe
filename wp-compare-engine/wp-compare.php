@@ -589,12 +589,77 @@ final class WP_Compare_Engine {
     }
 
     /**
+     * Render the Compare Checkbox for a post
+     * 
+     * @param int|null $post_id Optional. Post ID. Defaults to global post.
+     */
+    public function render_checkbox( $post_id = null ) {
+        if ( ! $post_id ) {
+            $post_id = get_the_ID();
+        }
+
+        if ( ! $post_id ) {
+            return;
+        }
+
+        $settings = $this->get_setting('allowed_post_types', array('post', 'page'));
+        $post_type = get_post_type( $post_id );
+
+        // Check if post type is allowed
+        if ( ! in_array( $post_type, $settings, true ) ) {
+            return;
+        }
+
+        $post       = get_post( $post_id );
+        $slug       = $post->post_name;
+        $title      = get_the_title( $post_id );
+        $thumb_id   = get_post_thumbnail_id( $post_id );
+        $thumb_url  = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'thumbnail' ) : '';
+        
+        ?>
+        <button type="button" 
+                class="wp-compare-toggle" 
+                data-slug="<?php echo esc_attr( $slug ); ?>" 
+                data-post-id="<?php echo esc_attr( $post_id ); ?>"
+                data-title="<?php echo esc_attr( $title ); ?>"
+                data-thumbnail="<?php echo esc_url( $thumb_url ); ?>"
+                aria-label="<?php printf( esc_attr__( 'Add %s to comparison', 'wp-compare-engine' ), $title ); ?>">
+            
+            <span class="wp-compare-text-default">
+                <svg class="icon-checkbox" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                </svg>
+                <?php esc_html_e( 'Compare', 'wp-compare-engine' ); ?>
+            </span>
+            
+            <span class="wp-compare-text-active" style="display:none;">
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <?php esc_html_e( 'Compared', 'wp-compare-engine' ); ?>
+            </span>
+        </button>
+        <?php
+    }
+
+    /**
      * Initialize frontend classes
      */
     public function init_frontend_classes() {
-        if (class_exists('WP_Compare\\Compare_Engine')) {
+        // Load frontend class files manually since autoloader naming might not match
+        require_once WP_COMPARE_PLUGIN_DIR . 'includes/frontend/class-compare-engine.php';
+        require_once WP_COMPARE_PLUGIN_DIR . 'includes/frontend/class-query-handler.php';
+        require_once WP_COMPARE_PLUGIN_DIR . 'includes/frontend/class-schema-handler.php';
+        require_once WP_COMPARE_PLUGIN_DIR . 'includes/frontend/class-template-loader.php';
+        
+        if (class_exists('WP_Compare\\Query_Handler')) {
             new WP_Compare\Query_Handler($this);
+        }
+        if (class_exists('WP_Compare\\Schema_Handler')) {
             new WP_Compare\Schema_Handler();
+        }
+        if (class_exists('WP_Compare\\Template_Loader')) {
+            new WP_Compare\Template_Loader();
         }
     }
 
@@ -643,3 +708,41 @@ function wp_compare_engine_init() {
 }
 
 $GLOBALS['wp_compare_engine'] = wp_compare_engine_init();
+
+/**
+ * Helper Function: Render Compare Checkbox
+ * 
+ * Usage: <?php wp_compare_render_checkbox(); ?>
+ * 
+ * @param int|null $post_id Optional. Post ID. Defaults to global post.
+ */
+function wp_compare_render_checkbox( $post_id = null ) {
+    if ( isset( $GLOBALS['wp_compare_engine'] ) && method_exists( $GLOBALS['wp_compare_engine'], 'render_checkbox' ) ) {
+        $GLOBALS['wp_compare_engine']->render_checkbox( $post_id );
+    }
+}
+
+/**
+ * Helper Function: Get Settings
+ * 
+ * @return array
+ */
+function wp_compare_get_settings() {
+    if ( isset( $GLOBALS['wp_compare_engine'] ) ) {
+        return $GLOBALS['wp_compare_engine']->get_setting('allowed_post_types', array('post', 'page'));
+    }
+    return array('post', 'page');
+}
+
+/**
+ * Helper Function: Is Compare Page
+ * 
+ * @return bool
+ */
+function wp_compare_is_compare_page() {
+    global $wp;
+    if ( ! isset( $wp->query_vars['wp_compare_slugs'] ) ) {
+        return false;
+    }
+    return true;
+}
